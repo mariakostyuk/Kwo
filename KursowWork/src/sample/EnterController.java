@@ -4,7 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class EnterController {
+public class EnterController implements Returnable{
 
     public static Task task;
 
@@ -47,6 +47,15 @@ public class EnterController {
             throw ex;
         }
         return new Task(val, title);
+    }
+
+    public Task getReturn() {
+        String textComplexity = FirstText.getText();
+        String textTitle = SecondText.getText();
+        task = verifyTask(textTitle, textComplexity);
+        Stage stage = (Stage) OkButton.getScene().getWindow();
+        stage.close();
+        return task;
     }
 
 }
