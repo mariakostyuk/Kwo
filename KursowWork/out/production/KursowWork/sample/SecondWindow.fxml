@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="900.0" prefWidth="1360.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.SecondWindowController">
+   <children>
+      <TableView fx:id="promotionTable" layoutX="27.0" layoutY="101.0" maxWidth="1320.0" minWidth="680.0" prefHeight="724.0" prefWidth="1320.0" style="-fx-background-color: #fff4f4; -fx-border-color: #C7C7C7;" AnchorPane.bottomAnchor="81.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="101.0">
+        <columns>
+          <TableColumn fx:id="titleColumn" maxWidth="900.0" minWidth="900.0" prefWidth="900.0" text="Promotion" />
+          <TableColumn fx:id="costColumn" maxWidth="325.0" minWidth="325.0" prefWidth="325.0" text="Cost" />
+        </columns>
+      </TableView>
+      <Button fx:id="closeButton" layoutX="499.0" layoutY="14.0" mnemonicParsing="false" onAction="#GoToHome" prefHeight="31.0" prefWidth="72.0" style="-fx-border-color: #C7C7C7; -fx-background-color: #BAB8E5;" text="Home" AnchorPane.bottomAnchor="850.0" AnchorPane.leftAnchor="1200.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="30.0" />
+      <Label layoutX="935.0" layoutY="30.0" text="Score:" underline="true" AnchorPane.bottomAnchor="840.0" AnchorPane.leftAnchor="900.0" AnchorPane.rightAnchor="360.0" AnchorPane.topAnchor="30.0" />
+      <Button layoutX="1262.0" layoutY="828.0" mnemonicParsing="false" onAction="#ShopAddButtonOnAction" style="-fx-background-color: #E4E88C; -fx-border-color: #C7C7C7;" text="    Confirm    " AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="1100.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="850.0" />
+      <Label fx:id="scoreTextLabelTwo" layoutX="1042.0" layoutY="30.0" text="ScoreText" AnchorPane.bottomAnchor="840.0" AnchorPane.leftAnchor="1020.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="30.0" />
+   </children>
+</AnchorPane>
