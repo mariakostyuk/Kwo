@@ -1,29 +1,29 @@
-package sample;
+package com.mashka.models;
 
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
-public class Task {
-    private  IntegerProperty complexity;
-    private  StringProperty title;
+public class Promotion {
+    private IntegerProperty cost;
+    private StringProperty title;
 
     /**
      * Конструктор по умолчанию.
 
      */
-    public Task() {
+    public Promotion() {
         this(null,null);
     }
 
     /**
      * Конструктор норм
-     * @param complexity
+     * @param cost
      * @param title
      */
-    public Task(Integer complexity, String title) {
-        this.complexity = new SimpleIntegerProperty(complexity);
+    public Promotion(Integer cost, String title) {
+        this.cost = new SimpleIntegerProperty(cost);
         this.title = new SimpleStringProperty(title);
     }
 
@@ -40,16 +40,16 @@ public class Task {
         return title;
     }
 
-    public int getComplexity(){
-        return complexity.get();
+    public int getCost(){
+        return cost.get();
     }
 
-    public void setComplexity(int complexity) {
-        this.complexity.set(complexity);
+    public void setCost(int cost) {
+        this.cost.set(cost);
     }
 
-    public IntegerProperty complexityProperty(){
-        return complexity;
+    public IntegerProperty costProperty(){
+        return cost;
     }
 
 }

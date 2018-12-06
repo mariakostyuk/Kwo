@@ -1,5 +1,7 @@
-package sample;
+package com.mashka.conrollers;
 
+import com.mashka.conrollers.utils.StageWithReturn;
+import com.mashka.models.Task;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
@@ -16,7 +18,7 @@ import java.io.*;
 
 
 @SuppressWarnings("ALL")
-public class Controller {
+public class MainController {
     private int flag;
     private boolean flagScopOut;
     private int tablePosition;
@@ -283,7 +285,7 @@ public class Controller {
     private void handleButtonAction() {
         try {
             FXMLLoader fxmlLoader;
-            fxmlLoader = new FXMLLoader(getClass().getResource("SecondWindow.fxml"));
+            fxmlLoader = new FXMLLoader(getClass().getResource("../views/SecondWindow.fxml"));
             Parent root1 = fxmlLoader.load();
             Stage stage = new Stage();
             stage.setTitle("Store");
@@ -350,7 +352,7 @@ public class Controller {
     private void enterWindowShow() {
         try {
             FXMLLoader fxmlLoader;
-            fxmlLoader = new FXMLLoader(getClass().getResource("Enter.fxml"));
+            fxmlLoader = new FXMLLoader(getClass().getResource("../views/Enter.fxml"));
             Parent root1 = fxmlLoader.load();
             EnterController ctrl = fxmlLoader.getController();
             Stage stage = new StageWithReturn(); // Добавили Stage функционал возврата результата из окна
@@ -395,7 +397,7 @@ public class Controller {
      * Конструктор
      * Dызывается раньше метода initialize().
      */
-    public Controller() {
+    public MainController() {
         readFromFile("Score.txt");
         readFromFile("TaskDay.txt", taskDataDay);
         readFromFile("TaskWeek.txt", taskDataWeek);
@@ -517,7 +519,7 @@ public class Controller {
         return score;
     }
 
-    public Controller(int scorePar) {
+    public MainController(int scorePar) {
         score = scorePar;
     }
 }
