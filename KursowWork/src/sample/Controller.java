@@ -13,7 +13,6 @@ import javafx.stage.Stage;
 
 import java.io.*;
 
-import static sample.EnterController.task;
 
 
 @SuppressWarnings("ALL")
@@ -174,27 +173,7 @@ public class Controller {
             writeInFile("Score.txt");
             flagScopOut = false;
         }
-        //Обновление списка и таблицы
-        if (flag == 1) {
-            taskDataDay.add(task);
-            taskTableDay.refresh();
-            writeInFile("TaskDay.txt", taskDataDay);
-        }
-        if (flag == 3) {
-            taskDataMonth.add(task);
-            taskTableMonth.refresh();
-            writeInFile("TaskMonth.txt", taskDataMonth);
-        }
-        if (flag == 2) {
-            taskDataWeek.add(task);
-            taskTableWeek.refresh();
-            writeInFile("TaskWeek.txt", taskDataWeek);
-        }
-        if (flag == 4) {
-            taskDataYear.add(task);
-            taskTableYear.refresh();
-            writeInFile("TaskYear.txt", taskDataYear);
-        }
+
     }
 
     /**
@@ -294,6 +273,7 @@ public class Controller {
         writeInFile("TaskYear.txt", taskDataYear);
     }
 
+
     /**
      * Открытие окна магазина.
      * (Родительское окно - текущее)
@@ -333,6 +313,36 @@ public class Controller {
         this.mainStage = mainStage;
     }
 
+
+    /**
+     * Добавление новой задачи
+     * @param task Объект задачи
+     */
+    private void addTask(Task task) {
+        //Обновление списка и таблицы
+        if (flag == 1) {
+            taskDataDay.add(task);
+            taskTableDay.refresh();
+            writeInFile("TaskDay.txt", taskDataDay);
+        }
+        if (flag == 3) {
+            taskDataMonth.add(task);
+            taskTableMonth.refresh();
+            writeInFile("TaskMonth.txt", taskDataMonth);
+        }
+        if (flag == 2) {
+            taskDataWeek.add(task);
+            taskTableWeek.refresh();
+            writeInFile("TaskWeek.txt", taskDataWeek);
+        }
+        if (flag == 4) {
+            taskDataYear.add(task);
+            taskTableYear.refresh();
+            writeInFile("TaskYear.txt", taskDataYear);
+        }
+    }
+
+
     /**
      * Открытие окна ввода
      * для создания новой задачи
@@ -342,13 +352,16 @@ public class Controller {
             FXMLLoader fxmlLoader;
             fxmlLoader = new FXMLLoader(getClass().getResource("Enter.fxml"));
             Parent root1 = fxmlLoader.load();
-            Stage stage = new Stage();
+            EnterController ctrl = fxmlLoader.getController();
+            Stage stage = new StageWithReturn(); // Добавили Stage функционал возврата результата из окна
             stage.setTitle("Enter");
             stage.setScene(new Scene(root1, 300, 260));
+
             // Новое окно - дочернее
             stage.initModality(Modality.WINDOW_MODAL);
             stage.initOwner(mainStage);
-            stage.show();
+            Task task = (Task) ((StageWithReturn) stage).showAndReturn(ctrl); // Получаем из второй формы объект задания
+            addTask(task); // Добавляем задачи
         } catch (Exception e) {
             System.out.println("Error: can't load new Window");
         }
@@ -356,26 +369,26 @@ public class Controller {
 
     @FXML
     private void addDayTaskOnAction() {
-        enterWindowShow();
         flag = 1;
+        enterWindowShow();
     }
 
     @FXML
     private void addWeekTaskOnAction() {
-        enterWindowShow();
         flag = 2;
+        enterWindowShow();
     }
 
     @FXML
     private void addMonthTaskOnAction() {
-        enterWindowShow();
         flag = 3;
+        enterWindowShow();
     }
 
     @FXML
     private void addYearTaskOnAction() {
-        enterWindowShow();
         flag = 4;
+        enterWindowShow();
     }
 
     /**
