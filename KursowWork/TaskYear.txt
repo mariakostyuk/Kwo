@@ -1,10 +1,4 @@
-1
-o
-2
-tt
-3
-hhh
-9
-perntwo
-6
-nn
+60
+JAVA
+40
+Angl

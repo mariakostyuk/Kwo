@@ -3,6 +3,7 @@ package com.mashka.conrollers;
 import com.mashka.conrollers.utils.Returnable;
 import com.mashka.models.Task;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -17,6 +18,9 @@ public class EnterController implements Returnable {
     @FXML
     private TextField SecondText;
 
+    Alert alertI = new Alert(Alert.AlertType.INFORMATION);
+    Alert alertW = new Alert(Alert.AlertType.WARNING);
+
     /**
      * Активна кнопка OK
      * Подтверждение добавления новой задачи
@@ -25,9 +29,41 @@ public class EnterController implements Returnable {
     private void OkButtonOnAction() {
         String textComplexity = FirstText.getText();
         String textTitle = SecondText.getText();
-        task = verifyTask(textTitle, textComplexity);
+        if (verifyTask(textComplexity)){
+            alertI.setTitle("INFORMATION");
+            alertI.setHeaderText(null);
+            alertI.setContentText("Task accepted");
+            alertI.showAndWait();
+            task = verifyTask(textTitle, textComplexity);
+        }else{
+            alertW.setTitle("WARNING");
+            alertW.setHeaderText(null);
+            alertW.setContentText("Incorrect data entered");
+            alertW.showAndWait();
+        }
+
+      //  task = verifyTask(textTitle, textComplexity);
         Stage stage = (Stage) OkButton.getScene().getWindow();
         stage.close();
+    }
+
+    /**
+     * Проверка ввода новой задачи
+     * @param comlexity
+     * @return
+     */
+    private Boolean verifyTask(String comlexity){
+        int intik;
+        try{
+            intik = Integer.parseInt(comlexity);
+            if (intik <= 0){
+                return false;
+            }
+            return true;
+        }
+        catch (RuntimeException ex){
+            return false;
+        }
     }
 
     /**

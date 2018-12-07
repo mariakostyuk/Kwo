@@ -77,10 +77,10 @@ public class MainController {
         flagok = comboBox.getValue();
         int tablePositionDay, tablePositionWeek, tablePositionMonth, tablePositionYear;
 
-        tablePositionDay = taskTableWeek.getSelectionModel().getSelectedIndex();
+        tablePositionDay = taskTableDay.getSelectionModel().getSelectedIndex();
         tablePositionWeek = taskTableWeek.getSelectionModel().getSelectedIndex();
-        tablePositionMonth = taskTableWeek.getSelectionModel().getSelectedIndex();
-        tablePositionYear = taskTableWeek.getSelectionModel().getSelectedIndex();
+        tablePositionMonth = taskTableMonth.getSelectionModel().getSelectedIndex();
+        tablePositionYear = taskTableYear.getSelectionModel().getSelectedIndex();
 
         if (tablePositionDay > -1){
             tablePosition = tablePositionDay;
@@ -137,6 +137,7 @@ public class MainController {
      */
     @FXML
     private void deleteButtonOnAction() {
+        int tempScore = 0;
         int tablePositionDay, tablePositionWeek, tablePositionMonth, tablePositionYear;
         tablePositionDay =  taskTableDay.getSelectionModel().getSelectedIndex();
         tablePositionWeek =  taskTableWeek.getSelectionModel().getSelectedIndex();
@@ -144,23 +145,29 @@ public class MainController {
         tablePositionYear =  taskTableYear.getSelectionModel().getSelectedIndex();
         if (tablePositionDay > -1){
             tablePosition = tablePositionDay;
+            tempScore = taskDataDay.get(tablePosition).getComplexity();
             taskDataDay.remove(tablePosition);
         } else{
             if (tablePositionWeek > -1){
                 tablePosition = tablePositionWeek;
+                tempScore = taskDataWeek.get(tablePosition).getComplexity();
                 taskDataWeek.remove(tablePosition);
             } else{
                 if (tablePositionMonth > -1){
                     tablePosition = tablePositionMonth;
+                    tempScore = taskDataMonth.get(tablePosition).getComplexity();
                     taskDataMonth.remove(tablePosition);
                 } else{
                     if (tablePositionYear > -1){
                         tablePosition = tablePositionYear;
+                        tempScore = taskDataYear.get(tablePosition).getComplexity();
                         taskDataYear.remove(tablePosition);
                     }
                 }
             }
         }
+        score += tempScore;
+        scoreTextLebel.setText(String.valueOf(score));
         writeInFile();
     }
 
