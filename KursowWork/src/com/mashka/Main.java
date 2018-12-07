@@ -1,5 +1,6 @@
-package sample;
+package com.mashka;
 
+import com.mashka.conrollers.MainController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -11,9 +12,9 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("sample.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("views/sample.fxml"));
             Parent root = loader.load();
-            Controller controller = loader.getController();
+            MainController controller = loader.getController();
             controller.setMainStage(primaryStage);
             primaryStage.setTitle("TaskManager");
             Scene scene = new Scene(root, 1300, 900);

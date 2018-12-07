@@ -1,4 +1,4 @@
-package sample;
+package com.mashka.conrollers.utils;
 
 import javafx.stage.Stage;
 

@@ -1,10 +1,12 @@
-package sample;
+package com.mashka.conrollers;
 
+import com.mashka.conrollers.utils.Returnable;
+import com.mashka.models.Task;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class EnterController implements Returnable{
+public class EnterController implements Returnable {
 
     public static Task task;
 

@@ -1,5 +1,6 @@
-package sample;
+package com.mashka.conrollers;
 
+import com.mashka.models.Promotion;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -15,7 +16,7 @@ import java.io.InputStreamReader;
 
 public class SecondWindowController {
     private ObservableList<Promotion> promotionList = FXCollections.observableArrayList();
-    private Controller controller;
+    private MainController controller;
     private Integer tempScore;
     @FXML
     private Label scoreTextLabelTwo = new Label();
@@ -102,7 +103,7 @@ public class SecondWindowController {
         return promotionList ;
     }
 
-    public void setController(Controller controller) {
+    public void setController(MainController controller) {
         this.controller = controller;
     }
 
